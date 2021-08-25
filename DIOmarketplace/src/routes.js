@@ -3,7 +3,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import FeatherIcon from "react-native-vector-icons/Feather";
 
-import Catalogo from './pages/Catalogo';
+import Catalog from './pages/Catalog';
 import Header from './components/Header';
 import Cart from "./pages/Cart";
 
@@ -21,7 +21,7 @@ export default function Routes() {
       >
         <Stack.Screen
           name="Catalog"
-          component={Catalogo}
+          component={Catalog}
           options={{
             headerShown: true,
             headerTransparent: true,

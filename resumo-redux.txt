@@ -1,0 +1,23 @@
+O que é Redux?
+-> Biblioteca ue implementa a arquitetura Flux
+-> Gerenciamento de estados globais(quando um estado influencia mais de um componente)
+
+Quando utilizar?
+-> Quando o estado possui mais de um "dono" e pode ser alterado por mais de um componente
+-> Quando as ações do usuário podem causar efeitos nos dados
+
+ARQUITETURA FLUX
+Exemplo: catálogo de um e-commerce
+
+1) Quando um cliente seleciona um produto do catálogo, é disparada uma *ACTION* para adicionar esse produto ao carrinho de compras;
+2) Cada ACTION possui um type, uma string que descreve o que aquela action faz. Por exemplo "ADD_TO_CART" e também possui a ação que será realizada;
+3) Essa informação (adição do produto no carrinho) será enviada para a STORE, onde ficam todas as entidades da aplicação, ou seja, os REDUCERS;
+
+* Princípios
+
+> Toda ACTION precisa de um "type";
+> O estado do Redux é o único ponto de verdade;
+> O estado não pode ser alterado sem uma ACTION;
+> As ACTIONS e REDUCERS são funções puras, ou seja, não lidam com side-effects assíncronos;
+> Qualquer lógica síncrona deve ficar no REDUCER e nunca na ACTION;
+> Nem toda aplicação precisa de REDUX, inicie sem ele e caso sinta necessidade, use-o;

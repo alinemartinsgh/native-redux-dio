@@ -21,3 +21,8 @@ Exemplo: catálogo de um e-commerce
 > As ACTIONS e REDUCERS são funções puras, ou seja, não lidam com side-effects assíncronos;
 > Qualquer lógica síncrona deve ficar no REDUCER e nunca na ACTION;
 > Nem toda aplicação precisa de REDUX, inicie sem ele e caso sinta necessidade, use-o;
+
+* Redux SAGA 
+
+https://redux-saga.js.org/
+

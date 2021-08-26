@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react';
+import { useSelector, useDispatch } from 'react-redux'
 import { View } from 'react-native';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 
@@ -23,9 +24,12 @@ import {
 } from './styles';
 import formatValue from '../../utils/formatValue'
 import EmptyCart from '../../components/EmptyCart';
+import * as CartActions from '../../store/modules/cart/actions'
 
 export default function Cart() {
-  const [products, setProducts] = useState([]);
+  const dispatch = useDispatch()
+
+  const products = useSelector(({cart}) => cart);
 
   const cartSize = useMemo(() => {
     return products.length || 0;
@@ -33,7 +37,7 @@ export default function Cart() {
 
   const cartTotal = useMemo(() => {
     const cartAmount = products.reduce((accumulator, product) => {
-      const totalPrice = accumulator + product.price * product.quantity;
+      const totalPrice = accumulator + product.price * product.amount;
       return totalPrice;
     }, 0)
 
@@ -63,20 +67,20 @@ export default function Cart() {
                   </ProductSinglePrice>
                   <TotalContainer>
                     <ProductQuantity>
-                      {`${item.quantity}x`}
+                      {`${item.amount}x`}
                     </ProductQuantity>
                     <ProductPrice>
-                      {formatValue(item.price * item.quantity)}
+                      {formatValue(item.price * item.amount)}
                     </ProductPrice>
                   </TotalContainer>
                 </ProductPriceContainer>
               </ProductTitleContainer>
               <ActionContainer>
                 <ActionButton onPress={() => { }}>
-                  <FeatherIcon name="plus" color="E83F5B" />
+                  <FeatherIcon name="plus" color="#E83F5B" />
                 </ActionButton>
                 <ActionButton onPress={() => { }}>
-                  <FeatherIcon name="minus" color="E83F5B" />
+                  <FeatherIcon name="minus" color="#E83F5B" />
                 </ActionButton>
               </ActionContainer>
             </Product>
@@ -86,7 +90,7 @@ export default function Cart() {
       <TotalProductsContainer>
         <FeatherIcon name="shopping-cart" color="#fff" size={24} />
         <TotalProductsText>{cartSize} {cartSize === 1 ? 'item' : 'itens'}</TotalProductsText>
-        <SubTotalValue>R$ 150,00</SubTotalValue>
+        <SubTotalValue>{cartTotal}</SubTotalValue>
       </TotalProductsContainer>
     </Container>
   )

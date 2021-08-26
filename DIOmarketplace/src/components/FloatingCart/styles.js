@@ -2,7 +2,6 @@ import styled from "styled-components/native";
 
 export const Container = styled.View`
   bottom: 0;
-  position: absolute;
   background: #e83f5b;
   padding: 0 18px;
   border-top-left-radius: 10px;
